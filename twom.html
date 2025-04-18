@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fashion Hub | Premium Clothing Store</title>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 20px;
+      transition: 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      background-color: #ff4d4d;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      min-width: 160px;
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      padding: 10px 15px;
+      color: #333;
+      text-align: left;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ff4d4d;
+      color: white;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: flex;
+    }
+
+    .cart-dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cart-dropdown-content {
+      position: absolute;
+      top: 120%;
+      right: 0;
+      background-color: white;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      display: none;
+      z-index: 999;
+    }
+
+    .cart-dropdown:hover .cart-dropdown-content {
+      display: block;
+    }
+
+    .cart-dropdown-content p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .cart-icon {
+      font-size: 20px;
+      color: #333;
+      margin-left: 20px;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://images.unsplash.com/photo-1618354691549-f5c33148638e') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 90px;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      padding: 15px 30px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #e63636;
+      transform: scale(1.05);
+    }
+
+    /* Featured Products */
+    .featured-products {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-name {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      color: #ff4d4d;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 50px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 24px;
+    }
+
+    .social-icons a {
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ff4d4d;
+    }
+
+    /* Scroll to Top */
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+      z-index: 999;
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #ff3333;
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .product-image {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">FASHIONHUB</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">New Arrivals</a>
+
+      <div class="dropdown">
+        <a href="#">Men <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="#">T-Shirts</a>
+          <a href="#">Jeans</a>
+          <a href="#">Shoes</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a href="#">Women <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="#">Dresses</a>
+          <a href="#">Tops</a>
+          <a href="#">Accessories</a>
+        </div>
+      </div>
+    </div>
+    <div class="cart-dropdown">
+      <i class="fas fa-shopping-cart cart-icon"></i>
+      <div class="cart-dropdown-content">
+        <p>🛒 No items in cart</p>
+        <a href="#" class="cta-button" style="font-size:14px;padding:8px 20px;">View Cart</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1>New Collection 2024</h1>
+      <p>Discover our premium selection of modern fashion</p>
+      <button class="cta-button">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <h2>Featured Products</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="product1.jpg" alt="Designer T-Shirt" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-name">Designer T-Shirt</h3>
+          <p class="product-price">$49.99</p>
+          <button class="cta-button">Quick Add</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="product2.jpg" alt="Premium Jeans" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-name">Premium Jeans</h3>
+          <p class="product-price">$89.99</p>
+          <button class="cta-button">Quick Add</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>Premium fashion destination offering quality and style since 2010</p>
+      </div>
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button onclick="scrollToTop()" id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function () {
+      scrollBtn.style.display = document.documentElement.scrollTop > 300 ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>

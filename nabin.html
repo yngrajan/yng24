@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Absurd T-Shirt Emporium!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f0e68c; /* Soft beige background */
+            font-family: 'Georgia', serif; /* Elegant font */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 1s ease-in; /* Fade-in effect */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: #4b3d6a; /* Dark royal purple */
+            color: #f0e68c; /* Soft beige text */
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #f0e68c;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s; /* Added transform for hover */
+        }
+
+        nav ul li a:hover {
+            color: #ffffff; /* Change color on hover */
+            transform: scale(1.1); /* Slight scale on hover */
+        }
+
+        .weird-product {
+            border: 5px solid #7a60a6; /* Soft lavender border */
+            background-color: #e6e1f0; /* Light lavender background */
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            display: inline-block; 
+            transform: rotate(-3deg); /* Slight rotation */
+            width: 250px; 
+            transition: transform 0.3s; /* Add transition effect */
+        }
+
+        .weird-product:hover {
+            transform: rotate(0deg) scale(1.05); /* Scale effect on hover */
+        }
+
+        .weird-product img {
+            max-width: 100%; 
+            height: auto;
+            transition: transform 0.3s; /* Add transition effect */
+        }
+
+        .weird-product img:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        footer {
+            background-color: #4b3d6a;
+            color: #f0e68c;
+            text-align: center;
+            padding: 20px;
+            position: relative; 
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            border: 2px solid #7a60a6;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 90%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #7a60a6;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4b3d6a; /* Dark royal purple */
+            color: #f0e68c; /* Soft beige */
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #7a60a6; /* Lighten on hover */
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        @media (max-width: 600px) {
+            .weird-product {
+                width: 100%; /* Full width for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Best Choice is herew !</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="h.html">Shop</a></li>
+                <li><a href="#new-arrival">New Arrivals</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="shop">
+            <h2>Shop Our Weird T-Shirts</h2>
+            <div class="weird-product">
+                <img src="images/cat-sunglasses.jpg" alt="T-Shirt with a cat wearing sunglasses">
+                <h3>Premium Cat Tee</h3>
+                <p>Price: $19.99</p>
+                <p>Description: A stylish t-shirt featuring a cool cat wearing sunglasses.</p>
+                <button onclick="alert('You really want this?')">Add to Cart</button>
+            </div>
+            <div class="weird-product">
+                <img src="images/llama-skateboard.jpg" alt="T-Shirt with a llama on a skateboard">
+                <h3>Local Llama Tee</h3>
+                <p>Price: $24.99</p>
+                <p>Description: A quirky t-shirt showcasing a llama on a skateboard.</p>
+                <button onclick="alert('Why not?')">Add to Cart</button>
+            </div>
+            <div class="weird-product">
+                <img src="a:\images.jpg" alt="T-Shirt with a  in space">
+                <h3>top model</h3>
+                <p>Price: $29.99</p>
+                <p>Description: A modern design featuring a potato floating in space.</p>
+                <button onclick="alert('Your best choice!')">Add to Cart</button>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us (If You Dare)</h2>
+            <p>If you have any questions, or just want to chat about our products, feel free to reach out!</p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="number" placeholder="Your Phone Number" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" onclick="alert('Message sent to the void!')">Send Message</button>
+            </form>
+            <p class="hidden-message">Psst! The secret is: Unicorns are real!</p>
+        </section>
+
+        <section id="reviews">
+            <h2>Customer Reviews</h2>
+            <p>"I love my potato shirt! It's a conversation starter!" - Alex</p>
+            <p>"The llama tee is so comfy and fun!" - Jamie</p>
+            <p>"Best purchase ever! Cats and t-shirts, what more could I want?" - Sam</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 The Absurd T-Shirt Emporium. Embrace the weirdness!</p>
+        <p>Follow us on:
+            <a href="https://www.facebook.com/kapitan.ubijca" style="color: #f0e68c;">Facebook</a>,
+            <a href="https://instagram.com" style="color: #f0e68c;">Instagram</a>,
+            <a href="https://twitter.com" style="color: #f0e68c;">Twitter</a>
+        </p>
+        <p><a href="#privacy-policy" style="color: #f0e68c;">Privacy Policy</a> | <a href="#terms-of-service" style="color: #f0e68c;">Terms of Service</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
